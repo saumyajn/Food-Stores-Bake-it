@@ -1,3 +1,4 @@
 /node_modules
 /variables.env
 /css
+/package-lock.json
