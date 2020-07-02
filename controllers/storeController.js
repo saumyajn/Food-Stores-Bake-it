@@ -87,3 +87,9 @@ exports.getStoreBySlug = async (req,res, next) => {
   //redirect to pug page
   res.render('showStore', { title: store.name, store});
 }
+
+exports.getStoresByTag =async (req,res) => {
+  const tags = await Store.getTagsList();
+  const tag = req.params.tag;
+  res.render('tag',{ tags,title: 'Tags',tag});
+}
