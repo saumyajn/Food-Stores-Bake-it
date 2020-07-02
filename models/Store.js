@@ -13,12 +13,32 @@ const storeSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  tags: [String]
+  tags: [String],
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  location: {
+    type: {
+      type: String,
+      default: 'Point'
+    },
+    coordinates: [
+      {
+        type: Number,
+        required: 'You must enter coordinates!'
+      }    
+    ],
+    address: {
+      type: String,
+      required: 'You must supply an address!' 
+    }
+  }
 
 });
 
 storeSchema.pre('save', function (next) {
-  if(!this.isModified('name')){
+  if (!this.isModified('name')) {
     return next();
   }
   this.slug = slug(this.name);

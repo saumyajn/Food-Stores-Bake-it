@@ -27,7 +27,7 @@ exports.editStore = async (req, res) => {
 
   //check if they are owner
   //render out edit form so that user cn update the store
-  res.render('editStore', { title: `Edit ${store.name}`, store });
+  res.render('editStore', { title: `Edit "${store.name}"`, store });
 }
 
 exports.updateStore = async (req, res) => {
